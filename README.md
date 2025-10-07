@@ -1,9 +1,15 @@
 # WARP Data Manager 🚀
 
-Professional backup and management tool for WARP Terminal data with GUI and CLI interfaces.
+Professional backup and management tool for WARP Terminal data with GUI, CLI, GitHub sync, and automated scheduling.
+
+## Versions 📦
+
+- **Basic v1.1.1** (`warp-manager.py`) - Core backup functionality
+- **Enhanced v1.2.0** (`warp-manager-enhanced.py`) - GitHub sync + automation
 
 ## Features ⚡
 
+### Core Features (Both Versions)
 - **📸 Take Snapshot** - One-click full backup of all WARP data
 - **💾 Save Rules** - Backup only WARP rules and configurations  
 - **🔧 Save MCP Servers** - Backup MCP server configurations
@@ -13,48 +19,68 @@ Professional backup and management tool for WARP Terminal data with GUI and CLI 
 - **🌐 Proxy Settings** - Configure proxy for network operations
 - **🔄 Restore** - Restore from any backup with pre-restore safety backup
 - **📋 List Backups** - View all available backups with metadata
-- **✨ SemVer Naming** - Backups use semantic versioning (1.1.1 format)
+- **✨ SemVer Naming** - Backups use semantic versioning (1.1.1/1.2.0 format)
+
+### Enhanced Features (v1.2.0 Only)
+- **🔧 GitHub Integration** - Private repo backup sync
+- **☁️ Remote Storage** - Upload/download backups to/from GitHub
+- **⏰ Automated Scheduler** - Daily/weekly scheduled backups
+- **🤖 Background Service** - Systemd service integration
+- **🔄 Sync All** - Bulk upload all local backups to GitHub
 
 ## Installation 🛠️
 
+### Quick Setup (Ultra-Fast)
 ```bash
-git clone <this-repo>
-cd warp-manager
-chmod +x install.sh
+git clone https://github.com/EnkiJJK/warp-data-manager.git
+cd warp-data-manager
+./deploy-fast.sh
+```
+
+### Basic Installation
+```bash
 ./install.sh
+```
+
+### Enhanced Installation (GitHub + Scheduler)
+```bash
+./install-enhanced.sh
 ```
 
 ## Usage 🎯
 
-### GUI Mode (Default)
+### Basic Version (v1.1.1)
 ```bash
+# GUI Mode
 warp-manager
+
+# CLI Mode
+warp-manager --snapshot
+warp-manager --backup rules
+warp-manager --list
+warp-manager --help
 ```
 
-### CLI Mode
+### Enhanced Version (v1.2.0)
 ```bash
-# Take complete snapshot
-warp-manager --snapshot
+# Core backup functions
+warp-manager-enhanced --snapshot
+warp-manager-enhanced --backup rules --upload
+warp-manager-enhanced --list
 
-# Save specific components
-warp-manager --backup rules
-warp-manager --backup mcp database
-warp-manager --backup rules mcp preferences
+# GitHub Integration
+warp-manager-enhanced --setup-github
+warp-manager-enhanced --sync-all
+warp-manager-enhanced --list-remote
 
-# List backups
-warp-manager --list
+# Automated Scheduling
+warp-manager-enhanced --schedule daily --schedule-time 02:00
+warp-manager-enhanced --schedule weekly --schedule-time 03:00
+warp-manager-enhanced --start-scheduler
 
-# Restore from backup
-warp-manager --restore /home/user/.warp-backups/backup.tar.zst
-
-# Reset WARP data (safe mode - moves to quarantine)
-warp-manager --reset
-
-# Delete local database only
-warp-manager --delete-db
-
-# Help
-warp-manager --help
+# Systemd Service
+systemctl --user start warp-backup-scheduler.service
+systemctl --user status warp-backup-scheduler.service
 ```
 
 ## Backup Types 📦
