@@ -1,0 +1,15 @@
+[Unit]
+Description=WARP Backup Scheduler
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/home/kali/tools/warp-manager/warp-manager-enhanced.py --start-scheduler
+Restart=always
+RestartSec=30
+Environment=HOME=/home/kali
+
+[Install]
+WantedBy=default.target
