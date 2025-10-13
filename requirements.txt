@@ -1,4 +1,4 @@
 # WARP Data Manager Dependencies
-zstandard>=0.21.0      # Fast compression
-keyring>=24.0.0        # Secure credential storage  
-PyGObject>=3.42.0      # GTK bindings (install via apt)
+zstandard>=0.21.0 # Fast compression
+keyring>=24.0.0 # Secure credential storage
+PyGObject>=3.42.0 # GTK bindings (install via apt)
